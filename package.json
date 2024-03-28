@@ -1,0 +1,41 @@
+{
+  "name": "collectionomicon",
+  "version": "1.0.0",
+  "description": "Collectionomicon is a general purpose collection tracking and organization app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/max27183141/Collectionomicon.git"
+  },
+  "keywords": [
+    "collectionomicon",
+    "collection",
+    "collect"
+  ],
+  "author": "Maxwell Hassen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/max27183141/Collectionomicon/issues"
+  },
+  "homepage": "https://github.com/max27183141/Collectionomicon#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.3",
+    "@babel/eslint-parser": "^7.24.1",
+    "@babel/plugin-transform-runtime": "^7.24.3",
+    "@babel/preset-env": "^7.24.3",
+    "@babel/preset-react": "^7.24.1",
+    "@babel/runtime": "^7.24.1",
+    "babel-loader": "^9.1.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
