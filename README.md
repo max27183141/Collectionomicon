@@ -1,2 +1,2 @@
-# Collectionomnicon
-Collectionomnicon is a generalized collection organization tool
+# Collectionomicon
+Collectionomicon is a generalized collection organization tool
