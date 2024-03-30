@@ -1,41 +1,54 @@
 import React, { useEffect } from 'react';
 import store from './store';
 import collectionReducer from './collectionSlice';
+import { useSelector } from 'react-redux';
 import actions from './actions';
 
 console.log('App.js is running!');
 const App = () => {
-  useEffect(() => {}, [store.dispatch]);
-  const starterCollections = [
-    { id: 0, name: 'collection1', elements: [] },
-    { id: 1, name: 'collection2', elements: [] },
-  ];
+  useEffect(() => {
+    const starterCollections = [
+      { id: 0, name: 'collection1', elements: [] },
+      { id: 1, name: 'collection2', elements: [] },
+    ];
 
-  starterCollections.forEach((collection) => {
-    store.dispatch(actions.addCollection(collection));
-  });
+    starterCollections.forEach((collection) => {
+      store.dispatch(actions.addCollection(collection));
+    });
+  }, []);
+
+  const collections = useSelector((state) => state.collection);
+
+  useEffect(() => {}, [collections]);
+
   return (
     <div>
       <h1>Welcome to Collectionomicon!</h1>
       <div>
-        <collectionBox />
+        <CollectionBox />
       </div>
     </div>
   );
 };
 
-const collectionBox = () => {
+const CollectionBox = () => {
   // this will be the main element that holds all the collections the user has
-  const collections = store.getState().collections.map((collection) => {
-    return (
-      <collection
-        key={collection.id}
-        id={collection.id}
-        name={collection.name}
-        elements={collection.elements}
-      />
-    );
-  });
+  //console.log(store.getState());
+  if (store.getState().collection.collections.length === 0) {
+    return <div>No collections to see yet</div>;
+  }
+  const collections = store
+    .getState()
+    .collection.collections.map((collection) => {
+      return (
+        <Collection
+          key={collection.id}
+          id={collection.id}
+          name={collection.name}
+          elements={collection.elements}
+        />
+      );
+    });
 
   return (
     <div>
@@ -44,8 +57,8 @@ const collectionBox = () => {
     </div>
   );
 };
-
-const collection = ({ id, name, elements }) => {
+// {[collections]}
+const Collection = ({ id, name, elements }) => {
   // this represents a single collection
   return (
     <div>
