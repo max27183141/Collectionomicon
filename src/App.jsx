@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import store from './store';
 import collectionReducer from './collectionSlice';
 import { useSelector } from 'react-redux';
-import actions from './actions';
+import { addCollection } from './collectionSlice';
 
 console.log('App.js is running!');
 const App = () => {
@@ -11,9 +11,8 @@ const App = () => {
       { id: 0, name: 'collection1', elements: [] },
       { id: 1, name: 'collection2', elements: [] },
     ];
-
     starterCollections.forEach((collection) => {
-      store.dispatch(actions.addCollection(collection));
+      store.dispatch(addCollection(collection));
     });
   }, []);
 

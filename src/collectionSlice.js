@@ -7,7 +7,7 @@ export const collectionSlice = createSlice({
   },
   reducers: {
     addCollection: (state, action) => {
-      //console.log(state.collections);
+      console.log('payload', action.payload);
       state.collections.push(action.payload);
     },
     removeCollection: (state, action) => {
@@ -20,7 +20,9 @@ export const collectionSlice = createSlice({
       const collection = state.collections.find(
         (collection) => collection.id === id
       );
-      collection.elements.push(element);
+      if (collection) {
+        collection.elements.push(element);
+      }
     },
   },
 });
