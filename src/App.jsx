@@ -3,6 +3,7 @@ import store from './store';
 import collectionReducer from './collectionSlice';
 import { useSelector } from 'react-redux';
 import { addCollection } from './collectionSlice';
+import { OAuth2Client } from 'google-auth-library';
 
 console.log('App.js is running!');
 const App = () => {
@@ -22,10 +23,30 @@ const App = () => {
 
   return (
     <div>
+      <OauthLogin />
       <h1>Welcome to Collectionomicon!</h1>
       <div>
         <CollectionBox />
       </div>
+    </div>
+  );
+};
+
+const getAuthenticatedClient = async () => {
+  await fetch('http://localhost:3000/login').then((response) => {
+    console.log(response);
+  });
+};
+
+const OauthLogin = () => {
+  // this will be the login page for the user
+  const url =
+    'https://accounts.google.com/o/oauth2/v2/auth?scope=email&response_type=token&redirect_uri=http://localhost:3000&client_id=408416125149-1otrnqmadatuueicfguo38ehv7d10kgo.apps.googleusercontent.com';
+
+  return (
+    <div>
+      <h2>Login</h2>
+      <a href={url}>Login with Google</a>
     </div>
   );
 };
